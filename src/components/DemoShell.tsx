@@ -1,3 +1,15 @@
+import type { ReactNode } from "react";
+
+export type DemoShellProps = {
+  badge: string;
+  badgeClassName: string;
+  title: string;
+  definition: string;
+  renderedLabel: string;
+  renderedAt: string;
+  children?: ReactNode;
+};
+
 export default function DemoShell({
   badge,
   badgeClassName,
@@ -6,7 +18,7 @@ export default function DemoShell({
   renderedLabel,
   renderedAt,
   children,
-}) {
+}: DemoShellProps) {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
       <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950">

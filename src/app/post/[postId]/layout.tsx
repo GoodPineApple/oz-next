@@ -1,15 +1,17 @@
-// export const metadata = {
-//   title: "Post",
-//   description: "Post",
-// };
+import type { ReactNode } from "react";
+import type { Metadata } from "next";
+import type { JsonPlaceholderPost } from "@/types/json-placeholder";
 
-export const generateMetadata = async ({ params }) => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ postId: string }>;
+}): Promise<Metadata> => {
   const { postId } = await params;
 
-  // fetch data
-  const post = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${postId}`,
-  ).then((res) => res.json());
+  const post = (await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${postId}`
+  ).then((res) => res.json())) as JsonPlaceholderPost;
   console.log(post);
 
   return {
@@ -25,7 +27,7 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-const PostLayout = ({ children }) => {
+const PostLayout = ({ children }: { children: ReactNode }) => {
   return <div>{children}</div>;
 };
 
